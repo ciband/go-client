@@ -67,7 +67,7 @@ func testGeneralError(t *testing.T, method string, err error) {
 }
 
 func testResponseUrl(t *testing.T, method string, r *http.Response, want string) {
-	if strings.Contains(r.Request.URL.String(), want) == false {
+	if !strings.Contains(r.Request.URL.String(), want) {
 		t.Errorf("[%+v][URL] got %+v, want %+v", method, r.Request.URL.String(), want)
 	}
 }
