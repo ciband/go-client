@@ -134,7 +134,7 @@ func TestPeersService_GetBadResponse(t *testing.T) {
 
 	mux.HandleFunc("/peers/1.2.3.4", func(writer http.ResponseWriter, request *http.Request) {
 		testMethod(t, request, "GET")
-		writer.WriteHeader(500)
+		writer.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprint(writer,
 			`{
 			  "success": false,
