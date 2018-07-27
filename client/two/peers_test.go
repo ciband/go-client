@@ -133,18 +133,22 @@ func TestPeersService_GetBadResponse(t *testing.T) {
 	defer teardown()
 
 	mux.HandleFunc("/peers/1.2.3.4", func(writer http.ResponseWriter, request *http.Request) {
-		testMethod(t, request, "GET")
-		writer.WriteHeader(http.StatusInternalServerError)
-		fmt.Fprint(writer,
-			`{
-			  "success": false,
-			  "error": "API endpoint not found"
-			}`)
+		//testMethod(t, request, "GET")
+		//writer.WriteHeader(http.StatusInternalServerError)
+		//fmt.Fprint(writer,
+		//	`{
+		//	  "success": false,
+		//	  "error": "API endpoint not found"
+		//	}`)
 	})
 
 	responseStruct, response, err := client.Peers.Get(context.Background(), "1.2.3.4")
 	testGeneralExpectError(t, "Peers.Get", err)
 	testResponseUrl(t, "Peers.Get", response, "/api/peers/1.2.3.4")
+	if response.StatusCode != http.StatusInternalServerError {
+		t.Error("StatusCode should be 500")
+	}
+
 	if responseStruct != nil {
 		t.Error("responseStruct should be nil")
 	}
