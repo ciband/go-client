@@ -141,5 +141,5 @@ func (c *Client) SendRequest(ctx context.Context, method string, urlStr string, 
 
 	defer resp.Body.Close()
 
-	return resp, nil
+	return resp, err
 }
