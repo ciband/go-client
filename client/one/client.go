@@ -22,7 +22,6 @@ import (
 
 const (
 	defaultBaseURL = "https://dexplorer.ark.io:8443/api/"
-	userAgent      = "go-client"
 )
 
 type Client struct {
