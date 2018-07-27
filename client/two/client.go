@@ -27,7 +27,6 @@ const (
 )
 
 type Client struct {
-	clientMu sync.Mutex
 	client   *http.Client
 
 	BaseURL *url.URL
