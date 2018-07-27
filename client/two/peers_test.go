@@ -148,6 +148,5 @@ func TestPeersService_GetBadResponse(t *testing.T) {
 	testResponseStruct(t, "Peers.Get", responseStruct, &GetPeer{
 		success: false,
 		error: "API endpoint not found",
-		},
 	})
 }
