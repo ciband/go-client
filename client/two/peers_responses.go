@@ -26,3 +26,8 @@ type GetPeer struct {
 	Meta Meta `json:"meta,omitempty"`
 	Data Peer `json:"data,omitempty"`
 }
+
+type GetPeerError struct {
+	Success bool   `json:"success,omitempty"`
+	Error   string `json:"error,omitempty"`
+}
