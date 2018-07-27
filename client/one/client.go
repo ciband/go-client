@@ -131,7 +131,7 @@ func (c *Client) SendRequest(ctx context.Context, method string, urlStr string, 
 	// Map the JSON response to a struct
 	if model != nil {
 		if w, ok := model.(io.Writer); ok {
-			_ = io.Copy(w, resp.Body)
+			_, _ = io.Copy(w, resp.Body)
 		} else {
 			decErr := json.NewDecoder(resp.Body).Decode(model)
 
