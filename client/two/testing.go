@@ -73,6 +73,10 @@ func testResponseUrl(t *testing.T, method string, r *http.Response, want string)
 }
 
 func testResponseStruct(t *testing.T, method string, got interface{}, want interface{}) {
+	if got == nil && want == nil {
+		return
+	}
+	
 	if !reflect.DeepEqual(got, want) {
 		var gotType reflect.Type = reflect.TypeOf(got)
 		var wantType reflect.Type = reflect.TypeOf(want)
