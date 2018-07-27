@@ -81,14 +81,14 @@ func testResponseStruct(t *testing.T, method string, got interface{}, want inter
 
 type values map[string]string
 
-func testFormValues(t *testing.T, r *http.Request, values values) {
-	want := url.Values{}
-	for k, v := range values {
-		want.Set(k, v)
-	}
-
-	_ = r.ParseForm()
-	if got := r.Form; !reflect.DeepEqual(got, want) {
-		t.Errorf("Request parameters: %v, want %v", got, want)
-	}
-}
+//func testFormValues(t *testing.T, r *http.Request, values values) {
+//	want := url.Values{}
+//	for k, v := range values {
+//		want.Set(k, v)
+//	}
+//
+//	_ = r.ParseForm()
+//	if got := r.Form; !reflect.DeepEqual(got, want) {
+//		t.Errorf("Request parameters: %v, want %v", got, want)
+//	}
+//}
