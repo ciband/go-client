@@ -78,17 +78,3 @@ func testResponseStruct(t *testing.T, method string, got interface{}, want inter
 		t.Errorf("[%+v][Response] got (%+v) %+v, want (%+v) %+v", method, gotType.String(), got, wantType.String(), want)
 	}
 }
-
-type values map[string]string
-
-//func testFormValues(t *testing.T, r *http.Request, values values) {
-//	want := url.Values{}
-//	for k, v := range values {
-//		want.Set(k, v)
-//	}
-//
-//	_ = r.ParseForm()
-//	if got := r.Form; !reflect.DeepEqual(got, want) {
-//		t.Errorf("Request parameters: %v, want %v", got, want)
-//	}
-//}
