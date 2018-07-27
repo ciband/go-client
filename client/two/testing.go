@@ -94,7 +94,7 @@ func testJsonPayload(t *testing.T, r *http.Request, values values) {
 
 	decoder := json.NewDecoder(r.Body)
 	var got dummyJsonPayload
-	decoder.Decode(&got)
+	_ = decoder.Decode(&got)
 
 	gotBuffer, _ := json.Marshal(got)
 	wantBuffer, _ := json.Marshal(want)
