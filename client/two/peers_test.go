@@ -143,7 +143,7 @@ func TestPeersService_GetBadResponse(t *testing.T) {
 	})
 
 	responseStruct, response, err := client.Peers.Get(context.Background(), "1.2.3.4")
-	testGeneralError(t, "Peers.Get", err)
+	testGeneralExpectError(t, "Peers.Get", err)
 	testResponseUrl(t, "Peers.Get", response, "/api/peers/1.2.3.4")
 	if responseStruct != nil {
 		t.Error("responseStruct should be nil")
