@@ -148,7 +148,11 @@ func TestPeersService_GetBadResponse(t *testing.T) {
 	if response.StatusCode != http.StatusInternalServerError {
 		t.Error("StatusCode should be 500")
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 3b4dda341ff04c184c44ec86979c11035e418de3
 	if responseStruct != nil {
 		t.Error("responseStruct should be nil")
 	}
