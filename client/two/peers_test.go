@@ -126,3 +126,27 @@ func TestPeersService_Get(t *testing.T) {
 		},
 	})
 }
+
+// Get a peer by the given IP address, expecting a bad response.
+func TestPeersService_GetBadResponse(t *testing.T) {
+	client, mux, _, teardown := setupTest()
+	defer teardown()
+
+	mux.HandleFunc("/peers/1.2.3.4", func(writer http.ResponseWriter, request *http.Request) {
+		//testMethod(t, request, "GET")
+		//writer.WriteHeader(http.StatusInternalServerError)
+		//fmt.Fprint(writer,
+		//	`{
+		//	  "success": false,
+		//	  "error": "API endpoint not found"
+		//	}`)
+	})
+
+	responseStruct, response, err := client.Peers.Get(context.Background(), "1.2.3.4")
+	testGeneralError(t, "Peers.Get", err)
+	testResponseUrl(t, "Peers.Get", response, "/api/peers/1.2.3.4")
+
+	if responseStruct != nil {
+		t.Error("responseStruct should be nil")
+	}
+}
